@@ -1,0 +1,6 @@
+# this file installs required dependencies only
+# (ordered alphabetically)
+simpy
+
+# secondary dependencies
+# (ordered alphabetically)
