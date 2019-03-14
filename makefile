@@ -7,7 +7,7 @@ dev:
 freeze: 
 	pip freeze | sort | grep -v 'simpy-events'
 test: 
-	cd tests && ( pytest -rXxs -vv --cov-report html --cov-report term-missing --cov simpy-events )
+	cd tests && ( pytest -rXxs -vv --cov-report html --cov-report term-missing --cov simpy_events )
 
 doc: 
 	cd docs && make html
