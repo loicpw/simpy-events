@@ -4,7 +4,7 @@
 import setuptools
 
 setuptools.setup(
-    name="simpy-events",
+    name="simpy_events",
     version="0.0.1",
     url="https://github.com/loicpw/simpy-events",
     download_url = "https://github.com/loicpw/simpy-events.git",
