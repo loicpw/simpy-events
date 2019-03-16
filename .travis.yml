@@ -15,6 +15,7 @@ install:
   # - pip install python-coveralls
   # workaround : see https://github.com/z4r/python-coveralls/issues/66
   - pip install python-coveralls 'coverage>=4.4'
+  - pip install -e .
 script:
   - cd tests && ( pytest -rXxs -vv --cov-report term-missing --cov simpy_events )
 after_success:
