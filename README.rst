@@ -27,21 +27,25 @@ event system with `SimPy`_ to decouple simulation code and increase reusability
 A basic example
 =======================
 
-.. seealso:: `SimPy`_ is a process-based discrete-event simulation framework based on standard Python.
+.. note:: `SimPy`_ is a process-based discrete-event simulation framework based on standard Python.
 
 + Our simplified scenario is composed of:
 
     - satellites emitting signals
     - receivers receiving and processing signals
 
-+ basic imports and creating the root namespace ::
++ basic imports and creating the root namespace:
+
+ .. code-block:: python
 
     from simpy_events.manager import RootNameSpace
     import simpy
 
     root = RootNameSpace()
 
-+ implementing a satellite model ::
++ implementing a satellite model:
+
+ .. code-block:: python
 
     sat = root.ns('satellite')
     
@@ -62,7 +66,9 @@ A basic example
                 event = env.timeout(1, ','.join(chunk))
                 yield signal(event)
 
-+ implementing a receiver model ::
++ implementing a receiver model:
+
+ .. code-block:: python
 
     receiver = root.ns('receiver')
     signals = receiver.topic('signals') 
@@ -80,7 +86,9 @@ A basic example
         for data in signal.split(','):
             yield receive(env.timeout(0, f'{header}: {data}'))
 
-+ creating code to analyse what's going on ::
++ creating code to analyse what's going on:
+
+ .. code-block:: python
 
     @root.enable('analyse')
     def new_process(context, event):
@@ -94,8 +102,10 @@ A basic example
         ns = metadata['ns']
         print(f'signal: {ns.path}: {event.value}') 
 
-+ setting up our simulation ::
++ setting up our simulation:
     
+ .. code-block:: python
+
     root.topic('receiver::signals').extend([
         '::satellite::signal',
     ])
